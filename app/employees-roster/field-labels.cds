@@ -7,5 +7,4 @@ annotate service.Employees with {
     salary    @(Common.Label: '{i18n>salry}');
     currency  @(Common.Label: '{i18n>currc}');
     startDate @(Common.Label: '{i18n>sdate}');
-    // content @(Common.Label: '{i18n>rsume}')
 };

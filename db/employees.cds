@@ -16,16 +16,3 @@ entity Employees : cuid, managed, name {
 
 
 }
-
-entity Applicants : cuid, name {
-    //Adding attachment field(mandatory lahat yan)
-    filename : String      @(UI.Hidden);
-    fileType : String      @(
-        Core.IsMediaType,
-        UI.Hidden
-    );
-    content  : LargeBinary @Core: {
-        MediaType                  : fileType,
-        ContentDisposition.Filename: fileName,
-    };
-}

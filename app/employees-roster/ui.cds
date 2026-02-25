@@ -28,10 +28,6 @@ annotate service.Employees with @(
                 $Type: 'UI.DataField',
                 Value: startDate,
             },
-        // {
-        //     $Type: 'UI.DataField',
-        //     Value: content,
-        // },
         ],
     },
     UI.Facets                 : [{
