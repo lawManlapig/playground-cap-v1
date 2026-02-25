@@ -1,7 +1,7 @@
 {
   "_version": "1.82.0",
   "sap.app": {
-    "id": "employeesroster",
+    "id": "applicantsroster",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.20.3",
-      "toolsId": "ca4db212-a8a9-456c-8016-4a3d2a415578"
+      "toolsId": "69d9cb58-a925-487a-8dba-f8f99ebbc5d3"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/employees/",
+        "uri": "/odata/v4/applicants/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -27,11 +27,11 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "playgroundSO-displayEmployees": {
+        "playgroundSO-manageApplicants": {
           "semanticObject": "playgroundSO",
-          "action": "manageEmployees",
-          "title": "{{playgroundSO-displayEmployees.flpTitle}}",
-          "subTitle": "{{playgroundSO-displayEmployees.flpSubtitle}}",
+          "action": "manageApplicants",
+          "title": "{{playgroundSO-manageApplicants.flpTitle}}",
+          "subTitle": "{{playgroundSO-manageApplicants.flpSubtitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -74,7 +74,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "employeesroster.i18n.i18n"
+          "bundleName": "applicantsroster.i18n.i18n"
         }
       },
       "": {
@@ -99,53 +99,49 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "EmployeesList",
-          "target": "EmployeesList"
+          "name": "ApplicantsList",
+          "target": "ApplicantsList"
         },
         {
-          "pattern": "Employees({key}):?query:",
-          "name": "EmployeesObjectPage",
-          "target": "EmployeesObjectPage"
+          "pattern": "Applicants({key}):?query:",
+          "name": "ApplicantsObjectPage",
+          "target": "ApplicantsObjectPage"
         }
       ],
       "targets": {
-        "EmployeesList": {
+        "ApplicantsList": {
           "type": "Component",
-          "id": "EmployeesList",
+          "id": "ApplicantsList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "initialLoad": true,
-              "contextPath": "/Employees",
+              "contextPath": "/Applicants",
               "variantManagement": "Page",
               "navigation": {
-                "Employees": {
+                "Applicants": {
                   "detail": {
-                    "route": "EmployeesObjectPage"
+                    "route": "ApplicantsObjectPage"
                   }
                 }
               },
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable",
-                    "personalization": {
-                      "column": false
-                    }
+                    "type": "ResponsiveTable"
                   }
                 }
               }
             }
           }
         },
-        "EmployeesObjectPage": {
+        "ApplicantsObjectPage": {
           "type": "Component",
-          "id": "EmployeesObjectPage",
+          "id": "ApplicantsObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Employees"
+              "contextPath": "/Applicants"
             }
           }
         }
@@ -158,7 +154,10 @@
   },
   "sap.fe": {
     "app": {
-      "enableLazyLoading": true
+      "enableLazyLoading": true,
+      "hideDraft": {
+        "enabled": true
+      }
     }
   },
   "sap.cloud": {

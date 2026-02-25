@@ -69,9 +69,23 @@ modules:
       - employeesroster.zip
       name: employeesroster
       target-path: resources/
+    - artifacts:
+      - applicantsroster.zip
+      name: applicantsroster
+      target-path: resources/
 - name: employeesroster
   type: html5
   path: app/employees-roster
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: applicantsroster
+  type: html5
+  path: app/applicants-roster
   build-parameters:
     build-result: dist
     builder: custom

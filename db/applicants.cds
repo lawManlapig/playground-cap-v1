@@ -5,7 +5,7 @@ using {name} from './aspects';
 
 entity Applicants : cuid, name {
     //Adding attachment field(mandatory lahat yan)
-    filename : String      @(UI.Hidden);
+    fileName : String      @(UI.Hidden);
     fileType : String      @(
         Core.IsMediaType,
         UI.Hidden

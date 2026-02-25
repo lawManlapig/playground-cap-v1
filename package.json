@@ -26,7 +26,8 @@
     "watch-employees-roster": "cds watch --open employeesroster/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy playground-cap-v1 --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-applicants-roster": "cds watch --open applicantsroster/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -53,6 +54,7 @@
     "app/*"
   ],
   "sapux": [
-    "app/employees-roster"
+    "app/employees-roster",
+    "app/applicants-roster"
   ]
 }
