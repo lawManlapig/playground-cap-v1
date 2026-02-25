@@ -155,10 +155,7 @@
   },
   "sap.fe": {
     "app": {
-      "enableLazyLoading": true,
-      "hideDraft": {
-        "enabled": true
-      }
+      "enableLazyLoading": true
     }
   },
   "sap.cloud": {
