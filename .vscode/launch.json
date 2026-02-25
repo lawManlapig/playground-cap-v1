@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}",
+      "command": "cds-ts watch --profile hybrid"
+    }
+  ]
+}

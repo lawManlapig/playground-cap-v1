@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:unif="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form">
+
+    <Dialog
+        id="d1"
+        title="Application Form"
+        beforeOpen="onBeforeOpen"
+        afterClose="onAfterClose">
+        
+        <!--VBOX-->
+        <VBox id="vb1" class="sapUiSmallMargin">
+            <form:SimpleForm id="sfApplicationForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3">
+                <form:content>
+                    <Label id="lbl1" text="First Name"/><Input id="iFirstName"/>
+                    <Label id="lbl2" text="Last Name"/><Input id="iLastName"/>
+
+                    <!--File Uploader-->
+                    <Label id="lbl3" text="Upload your resume"/>
+                    <unif:FileUploader id="uploadResume" uploadUrl="upload/" uploadComplete="onFileUploadComplete" />
+                </form:content>
+            </form:SimpleForm>
+        </VBox>
+
+        <!--Buttons-->
+        <beginButton>
+            <Button id="btnSubmit" text="Submit" type="Emphasized" press="onSubmit" enabled="true" icon="sap-icon://paper-plane"/>
+        </beginButton>
+        <endButton>
+            <Button id="btnCancel" text="Cancel" press="onCancel" icon="sap-icon://cancel"/>
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>

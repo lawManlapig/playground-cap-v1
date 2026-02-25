@@ -1,4 +1,4 @@
-using EmployeesService as service from '../../srv/employees';
+using EmployeesService as service from '../../srv/service';
 
 annotate service.Employees with @(
     UI.FieldGroup #MainDetails: {
@@ -28,6 +28,10 @@ annotate service.Employees with @(
                 $Type: 'UI.DataField',
                 Value: startDate,
             },
+        // {
+        //     $Type: 'UI.DataField',
+        //     Value: content,
+        // },
         ],
     },
     UI.Facets                 : [{

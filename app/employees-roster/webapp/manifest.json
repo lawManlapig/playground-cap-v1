@@ -115,6 +115,7 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
+              "initialLoad": true,
               "contextPath": "/Employees",
               "variantManagement": "Page",
               "navigation": {
@@ -127,7 +128,18 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "personalization": {
+                      "column": false
+                    }
+                  },
+                  "actions": {
+                    "apply": {
+                      "press": "employeesroster.ext.controller.CustomActions.onApply",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Apply Here!"
+                    }
                   }
                 }
               }
