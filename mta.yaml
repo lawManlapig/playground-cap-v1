@@ -1,56 +1,99 @@
 _schema-version: 3.3.0
 ID: playground-cap-v1
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+modules:
+- name: playground-cap-v1-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: playground-cap-v1-auth
+  - name: playground-cap-v1-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    instances: 1
+  build-parameters:
+    builder: npm-ci
+- name: playground-cap-v1-db-deployer
+  type: hdb
+  path: db
+  requires:
+  - name: playground-cap-v1-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: playground-cap-v1-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: playground-cap-v1-destination-service
+    parameters:
+      content-target: true
+  - name: playground-cap-v1_html_repo_host
+    parameters:
+      service-key:
+        name: playground-cap-v1_html_repo_host-key
+  - name: playground-cap-v1-auth
+    parameters:
+      service-key:
+        name: playground-cap-v1-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: PlayGroundAppRouter_playground_cap_v1_html_repo_host
+          ServiceInstanceName: playground-cap-v1-html5-app-host-service
+          ServiceKeyName: playground-cap-v1_html_repo_host-key
+          sap.cloud.service: PlayGroundAppRouter
+        - Authentication: OAuth2UserTokenExchange
+          Name: PlayGroundAppRouter_playground_cap_v1_auth
+          ServiceInstanceName: playground-cap-v1-auth
+          ServiceKeyName: playground-cap-v1-auth-key
+          sap.cloud.service: PlayGroundAppRouter
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+resources:
+- name: playground-cap-v1-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      oauth2-configuration:
+        credential-types:
+        - binding-secret
+        - x509
+      tenant-mode: dedicated
+      xsappname: playground-cap-v1-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: playground-cap-v1-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: playground-cap-v1-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: playground-cap-v1-destination-service
+    service-plan: lite
+- name: playground-cap-v1_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: playground-cap-v1-html5-app-host-service
+    service-plan: app-host
 parameters:
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production
-modules:
-  - name: playground-cap-v1-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      instances: 1
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm-ci
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: playground-cap-v1-auth
-      - name: playground-cap-v1-db
-
-  - name: playground-cap-v1-db-deployer
-    type: hdb
-    path: db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: playground-cap-v1-db
-
-resources:
-  - name: playground-cap-v1-auth
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json
-      config:
-        xsappname: playground-cap-v1-${org}-${space}
-        tenant-mode: dedicated
-        oauth2-configuration:
-          credential-types:
-            - "binding-secret"
-            - "x509"
-  - name: playground-cap-v1-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

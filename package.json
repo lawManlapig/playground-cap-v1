@@ -17,7 +17,9 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "w": "cds-ts w --profile hybrid"
+    "w": "cds-ts w --profile hybrid",
+    "bdep": "rimraf resources mta_archives && mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error",
+    "bdep_": "mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error"
   },
   "private": true,
   "cds": {
