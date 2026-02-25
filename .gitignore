@@ -40,3 +40,5 @@ db/.env
 dist/
 # auto generated wildcard
 srv/.env
+# added by cds
+.cdsrc-private.json

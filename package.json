@@ -13,13 +13,20 @@
     "@types/node": "^24.0.0",
     "tsx": "^4",
     "typescript": "^5",
-    "@cap-js/cds-typer": ">=0.1"
+    "@cap-js/cds-typer": ">=0.1",
+    "cds-plugin-ui5": "^0.13.0",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
   },
   "scripts": {
     "start": "cds-serve",
     "w": "cds-ts w --profile hybrid",
     "bdep": "rimraf resources mta_archives && mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error",
-    "bdep_": "mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error"
+    "bdep_": "mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error",
+    "watch-employees-roster": "cds watch --open employeesroster/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy playground-cap-v1 --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "private": true,
   "cds": {
@@ -41,5 +48,11 @@
   },
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/employees-roster"
+  ]
 }
