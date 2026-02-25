@@ -61,5 +61,11 @@ annotate service.Employees with @(
             $Type: 'UI.DataField',
             Value: startDate,
         },
+        {
+            $Type         : 'UI.DataFieldForIntentBasedNavigation',
+            SemanticObject: 'playgroundSO',
+            Action        : 'manageApplicants',
+            Label         : 'Apply here!',
+        },
     ],
 );
