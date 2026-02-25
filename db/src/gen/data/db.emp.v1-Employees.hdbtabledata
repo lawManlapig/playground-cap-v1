@@ -1,0 +1,45 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "DB_EMP_V1_EMPLOYEES",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "db.emp.v1-Employees.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "ID",
+          "FIRSTNAME",
+          "LASTNAME",
+          "POSITION",
+          "SALARY",
+          "CURRENCY_CODE",
+          "STARTDATE",
+          "CREATEDAT",
+          "CREATEDBY",
+          "MODIFIEDAT",
+          "MODIFIEDBY"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "ID": "ID",
+        "FIRSTNAME": "firstName",
+        "LASTNAME": "lastName",
+        "POSITION": "position",
+        "SALARY": "salary",
+        "CURRENCY_CODE": "currency_code",
+        "STARTDATE": "startDate",
+        "CREATEDAT": "createdAt",
+        "CREATEDBY": "createdBy",
+        "MODIFIEDAT": "modifiedAt",
+        "MODIFIEDBY": "modifiedBy"
+      }
+    }
+  ]
+}

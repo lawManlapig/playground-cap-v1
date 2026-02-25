@@ -1,0 +1,13 @@
+VIEW EmployeesService_Employees AS SELECT
+  Employees_0.ID,
+  Employees_0.createdAt,
+  Employees_0.createdBy,
+  Employees_0.modifiedAt,
+  Employees_0.modifiedBy,
+  Employees_0.firstName,
+  Employees_0.lastName,
+  Employees_0.position,
+  Employees_0.salary,
+  Employees_0.currency_code,
+  Employees_0.startDate
+FROM db_emp_v1_Employees AS Employees_0

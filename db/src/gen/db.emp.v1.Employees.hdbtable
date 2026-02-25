@@ -1,0 +1,14 @@
+COLUMN TABLE db_emp_v1_Employees (
+  ID NVARCHAR(36) NOT NULL,
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  firstName NVARCHAR(5000),
+  lastName NVARCHAR(5000),
+  position NVARCHAR(5000),
+  salary DECIMAL(8, 2),
+  currency_code NVARCHAR(3),
+  startDate DATE,
+  PRIMARY KEY(ID)
+)
