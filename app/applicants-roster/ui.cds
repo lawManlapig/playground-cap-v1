@@ -14,7 +14,16 @@ annotate service.Applicants with @(
             },
             {
                 $Type: 'UI.DataField',
+                Value: contactEmail,
+            },
+            {
+                $Type: 'UI.DataField',
                 Value: content,
+            },
+            {
+                $Type      : 'UI.DataField',
+                Value      : status,
+                Criticality: statusCriticality
             },
         ],
     },
@@ -26,16 +35,30 @@ annotate service.Applicants with @(
     }, ],
     UI.LineItem               : [
         {
-            $Type: 'UI.DataField',
-            Value: firstName,
+            $Type             : 'UI.DataField',
+            Value             : firstName,
+            @HTML5.CssDefaults: {width: '7rem'}
+        },
+        {
+            $Type             : 'UI.DataField',
+            Value             : lastName,
+            @HTML5.CssDefaults: {width: '7rem'}
         },
         {
             $Type: 'UI.DataField',
-            Value: lastName,
+            Value: contactEmail,
+            @HTML5.CssDefaults: {width: '15rem'}
         },
         {
             $Type: 'UI.DataField',
             Value: content,
+            @HTML5.CssDefaults: {width: '18rem'}
+        },
+        {
+            $Type      : 'UI.DataField',
+            Value      : status,
+            Criticality: statusCriticality,
+            @HTML5.CssDefaults: {width: '8rem'}
         },
     ],
 );
