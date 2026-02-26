@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: playground-cap-v1
 description: A simple CAP project.
-version: 1.0.0
+version: 2.0.0
 modules:
 - name: playground-cap-v1-srv
   type: nodejs

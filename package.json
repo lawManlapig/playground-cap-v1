@@ -1,6 +1,6 @@
 {
   "name": "playground-cap-v1",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap-cloud-sdk/http-client": "^4.4.0",
@@ -23,6 +23,7 @@
     "start": "cds-serve",
     "w": "cds-ts w --profile hybrid",
     "bdep": "rimraf resources mta_archives && mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error",
+    "bdep_d": "rimraf resources mta_archives && mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error --delete-services",
     "bdep_": "mbt build --mtar a && cf deploy mta_archives/a.mtar --abort-on-error",
     "watch-employees-roster": "cds watch --open employeesroster/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy playground-cap-v1 --delete-services --delete-service-keys --delete-service-brokers",
@@ -34,13 +35,7 @@
   "cds": {
     "requires": {
       "auth": "xsuaa",
-      "db": "hana",
-      "bpa_new_applicant": {
-        "kind": "rest",
-        "credentials": {
-          "destination": "WF-Trigger-API"
-        }
-      }
+      "db": "hana"
     },
     "build": {
       "tasks": [
