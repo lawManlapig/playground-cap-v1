@@ -1,10 +1,48 @@
 import * as cds from "@sap/cds";
+import { executeHttpRequest } from "@sap-cloud-sdk/http-client";
 
 export class ApplicantsService extends cds.ApplicationService {
   async init() {
+    this.after("SAVE", "Applicants", async (req) => {
+      let destinationName = "WF-Trigger-API";
+
+      // Build the Payload
+      let payload = {
+        definitionId: "ap21.bb40653atrial.newapplicant.newApplicantProcess",
+        context: {
+          parameters: {
+            contactEmail: req.contactEmail,
+            firstName: req.firstName,
+            lastName: req.lastName,
+          },
+        },
+      };
+
+      // Call the WF Trigger API
+      const response = await executeHttpRequest(
+        { destinationName: destinationName },
+        {
+          method: "POST",
+          data: payload,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      if (response.status === 201) {
+        req.status = "Submitted";
+      }
+    });
+
     // Real-time updates (Drafts)
     this.before("CREATE", "Applicants.drafts", async (req) => {
       req.data.status = "New";
+
+      req.info({
+        code: "Information",
+        message: "Your application will be submitted once saved. :)",
+      });
     });
 
     this.before("UPDATE", "Applicants.drafts", async (req) => {
