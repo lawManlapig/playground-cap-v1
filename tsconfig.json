@@ -10,9 +10,16 @@
     "sourceMap": true,
     "allowJs": true,
     "paths": {
-      "@sap/cds": ["./node_modules/@cap-js/cds-types"],
-      "#cds-models/*": ["./@cds-models/*/index.ts"]
+      "@sap/cds": [
+        "./node_modules/@cap-js/cds-types"
+      ],
+      "#cds-models/*": [
+        "./@cds-models/*/index.ts"
+      ]
     }
   },
-  "exclude": ["app/**/dist/**/*", "app/**/webapp/**/*"]
+  "exclude": [
+    "app/**/dist/**/*",
+    "app/**/webapp/**/*"
+  ]
 }
