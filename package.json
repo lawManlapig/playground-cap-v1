@@ -2,13 +2,19 @@
   "name": "playground-cap-v1",
   "version": "2.0.0",
   "dependencies": {
+    "@cap-js/cds-typer": "^0.38.0",
+    "@cap-js/cds-types": "^0.15.0",
     "@cap-js/hana": "^2",
     "@sap-cloud-sdk/http-client": "^4.4.0",
     "@sap/cds": "^9",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "@types/node": "^24.0.0",
+    "express": "^5.2.1",
+    "tsx": "^4",
+    "typescript": "^5"
   },
   "devDependencies": {
-    "@cap-js/cds-typer": ">=0.1",
+    "@cap-js/cds-typer": "^0.38.0",
     "@cap-js/cds-types": "^0.15.0",
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9",
@@ -34,7 +40,7 @@
   "private": true,
   "cds": {
     "requires": {
-      "auth": "xsuaa",
+      "auth": "mocked",
       "db": "hana"
     },
     "build": {
@@ -49,14 +55,11 @@
       ]
     }
   },
-  "imports": {
-    "#cds-models/*": "./@cds-models/*/index.js"
-  },
-  "workspaces": [
-    "app/*"
-  ],
   "sapux": [
     "app/employees-roster",
     "app/applicants-roster"
-  ]
+  ],
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
 }

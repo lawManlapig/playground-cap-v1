@@ -11,7 +11,7 @@
     "allowJs": true,
     "paths": {
       "@sap/cds": ["./node_modules/@cap-js/cds-types"],
-      "#cds-models/*": ["./@cds-models/*"]
+      "#cds-models/*": ["./@cds-models/*/index.ts"]
     }
   },
   "exclude": ["app/**/dist/**/*", "app/**/webapp/**/*"]

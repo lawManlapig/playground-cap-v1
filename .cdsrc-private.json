@@ -14,34 +14,6 @@
         "vcap": {
           "name": "db"
         }
-      },
-      "auth": {
-        "binding": {
-          "type": "cf",
-          "apiEndpoint": "https://api.cf.ap21.hana.ondemand.com",
-          "org": "bb40653atrial",
-          "space": "dev",
-          "instance": "playground-cap-v1-auth",
-          "key": "playground-cap-v1-auth-key"
-        },
-        "kind": "xsuaa-auth",
-        "vcap": {
-          "name": "auth"
-        }
-      },
-      "destinations": {
-        "binding": {
-          "type": "cf",
-          "apiEndpoint": "https://api.cf.ap21.hana.ondemand.com",
-          "org": "bb40653atrial",
-          "space": "dev",
-          "instance": "playground-cap-v1-destination-service",
-          "key": "playground-cap-v1-destination-service-key"
-        },
-        "kind": "destinations",
-        "vcap": {
-          "name": "destinations"
-        }
       }
     }
   }
