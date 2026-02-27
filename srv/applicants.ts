@@ -3,7 +3,22 @@ import { executeHttpRequest } from "@sap-cloud-sdk/http-client";
 
 export class ApplicantsService extends cds.ApplicationService {
   async init() {
-    this.after("SAVE", "Applicants", async (req) => {
+    const { Applicants } = this.entities;
+
+    this.before("READ", Applicants, (req) => {
+      req.info({
+        code: "Information",
+        message: "Gumagana yung action! Triggered from Nodejs",
+      });
+    });
+    this.on("Test", (req) => {
+      req.info({
+        code: "Information",
+        message: "Gumagana yung action! Triggered from Nodejs",
+      });
+    });
+
+    this.after("SAVE", Applicants, async (req) => {
       let destinationName = "WF-Trigger-API";
 
       // Build the Payload
@@ -36,7 +51,7 @@ export class ApplicantsService extends cds.ApplicationService {
     });
 
     // Real-time updates (Drafts)
-    this.before("CREATE", "Applicants.drafts", async (req) => {
+    this.before("CREATE", "Applicants.drafts", (req) => {
       req.data.status = "New";
 
       req.info({
