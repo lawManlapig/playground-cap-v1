@@ -37,17 +37,6 @@
         "auth": "mocked",
         "db": "hana"
       }
-    },
-    "build": {
-      "tasks": [
-        {
-          "for": "hana",
-          "dest": "../db"
-        },
-        {
-          "for": "nodejs"
-        }
-      ]
     }
   },
   "sapux": [

@@ -22,7 +22,7 @@ modules:
       builder: npm-ci
   - name: playground-cap-v1-db-deployer
     type: hdb
-    path: db
+    path: gen/db
     requires:
     - name: playground-cap-v1-db
     parameters:
@@ -41,7 +41,6 @@ modules:
       parameters:
         service-key:
           name: playground-cap-v1-auth-key
-    - name: srv-api
     parameters:
       content:
         instance:
@@ -132,7 +131,7 @@ resources:
             - Authentication: NoAuthentication
               HTML5.DynamicDestination: true
               HTML5.ForwardAuthToken: true
-              Name: srv-api
+              Name: playground-srv-api
               ProxyType: Internet
               Type: HTTP
               URL: ~{srv-api/srv-url}

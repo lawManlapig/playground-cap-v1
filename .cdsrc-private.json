@@ -8,9 +8,9 @@
           "org": "bb40653atrial",
           "space": "dev",
           "instance": "playground-cap-v1-db",
-          "key": "SharedDevKey"
+          "key": "playground-cap-v1-db-key"
         },
-        "kind": "hana-cloud",
+        "kind": "hana",
         "vcap": {
           "name": "db"
         }
