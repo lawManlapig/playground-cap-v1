@@ -12,6 +12,7 @@ entity Employees : cuid, managed, name {
     position  : String;
     salary    : Decimal(8, 2);
     currency  : Association to Currencies;
+    email     : String;
     startDate : Date;
 
 
